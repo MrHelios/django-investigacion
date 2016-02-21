@@ -1,3 +1,4 @@
 db.sqlite3
 cuenta/__pycache__/
 usuarios/__pycache__/
+usuarios/migrations/__pycache__/

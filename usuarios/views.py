@@ -1,7 +1,6 @@
 from django import forms
-from django.http import HttpResponse
 from django.http.response import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 
 def index(request):
     if request.method == 'POST':
@@ -38,3 +37,23 @@ def crear_usuario(request):
 def lista_usuario(request):
     mostrar_usuarios = User.objects.all()
     return render(request, 'HTML/lista.html', {'usuario':mostrar_usuarios})
+
+from django.template.context import RequestContext
+from .forms import Registrar_form
+
+def crear_usuario_FORM(request):
+    if request.method == 'POST':
+        form = Registrar_form(request.POST)
+        if form.is_valid():
+            user = User.objects.create_user(
+                form.cleaned_data['usuario'],
+                form.cleaned_data['clave2'],
+                form.cleaned_data['email'],
+            )
+            return HttpResponseRedirect('/usuario/lista/')
+        else:            
+            variable = RequestContext(request, {'form' : form})
+    else:
+        form = Registrar_form()
+        variable = RequestContext(request, {'form' : form})
+    return render_to_response('HTML/crear-user-form.html', variable)
