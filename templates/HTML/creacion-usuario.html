@@ -3,6 +3,15 @@
 <body>
     <h1>Creacion de Usuario</h1>
 
+    <nav>
+    {% if error_clave %}
+        <li>{{ error_clave }}</li>
+    {% endif %}
+    {% if error_nombre %}
+        <li>{{ error_nombre }}</li>
+    {% endif %}
+    </nav>    
+
     <form action="" method="post">
 
         <label for="usuario">Nombre del usuario</label>
@@ -10,6 +19,9 @@
 
         <label for="clave">Contraseña</label>
         <input type="password" name="clave" id="clave">
+
+        <label for="clave2">Confirmar Contraseña</label>
+        <input type="password" name="clave2" id="clave2">
 
         <input type="submit" value="login" />
         {% csrf_token %}
