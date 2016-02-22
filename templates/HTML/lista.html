@@ -3,9 +3,13 @@
 <body>
     <h1>Cuentas creada:</h1>
     <table>
-    {% for user in usuario %}
+    {% if usuario %}
+        {% for user in usuario %}
         <tr><td>{{ user.username }}</td></tr>
-    {% endfor %}
+        {% endfor %}
+    {% else %}
+        <p>Lo sentimos, pero nadie todavía se ha registrado. :(</p>
+    {% endif %}
     </table>
 </body>
 

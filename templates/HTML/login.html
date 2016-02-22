@@ -1,0 +1,27 @@
+<html>
+
+<body>
+    <h1>Login</h1>
+
+    {% if errors %}
+        <li>El usuario y/o la contraseña no son correcta.</li>
+    {% endif %}
+
+    <form action="" method="post">
+
+    <ul style="list-style-type:none">
+
+        <li><label for="username">Usuario: </label>
+        {{ form.usuario }}</li>
+
+        <li><label for="password">Password: </label>
+        {{ form.clave }}</li>
+
+        {% csrf_token %}
+        <li><input type="submit" value="login" /></li>
+    </ul>
+
+    </form>
+</body>
+
+</html>
