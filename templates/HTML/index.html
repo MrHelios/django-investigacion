@@ -1,21 +1,14 @@
-<html>
+{% extends "HTML/basico.html"%}
 
-<body>
-    <nav>
-        <a>{{ usuario }}</a> |
-        <a href="logout/">Desconectarse</a>
-    </nav>
+{% block content %}
+<h1>Proceso de prueba de POST</h1>
 
-    <h1>Proceso de prueba de POST</h1>
+<form action="" method="post">
 
-    <form action="" method="post">
+    <label for="algo">Escribi algo</label>
+    <input type="text" name="algo" id="algo">
 
-        <label for="algo">Escribi algo</label>
-        <input type="text" name="algo" id="algo">
-
-        <input type="submit" value="login" />
-        {% csrf_token %}
-    </form>
-</body>
-
-</html>
+    <input type="submit" value="login" />
+    {% csrf_token %}
+</form>
+{% endblock %}

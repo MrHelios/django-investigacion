@@ -1,0 +1,22 @@
+<html>
+{% load staticfiles %}
+<head>
+    {% block style %}
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'CSS/index/index.css' %}" />
+</head>
+
+<body>
+    <ul>
+        <li> <a>Bienvenido {{ usuario }}</a></li>
+        <li> <a href="lista/">Lista</a></li>
+        <li> <a href="crear-user-form/">Crear Usuario</a></li>
+        <li> <a href="login/">Login</a></li>
+        <li style="right: 0px; position: absolute;"> <a href="logout/">Desconectarse</a></li>
+    </ul>
+
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>

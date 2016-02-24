@@ -1,0 +1,39 @@
+ul {
+    background-color: black;
+    list-style-type: none;
+    position: absolute;
+    padding: 0px;
+    width: 100%;
+    top: 0%;
+    left: 0%
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    padding: 14px 16px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: green;
+}
+
+h1 {
+    position: absolute;
+    top: 50px;
+}
+
+form {
+    position: absolute;
+    top: 140px;
+}
+
+body{
+    background-color: white;
+}

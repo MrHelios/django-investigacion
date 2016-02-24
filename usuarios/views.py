@@ -7,7 +7,7 @@ def index(request):
     if request.user.is_authenticated():
         usuario = request.user
     else:
-        usuario = 'Anonimo'    
+        usuario = 'Anonimo'
 
     if request.method == 'POST':
         respuesta = request.POST.get('algo','')
@@ -40,7 +40,7 @@ def crear_usuario(request):
 
 def lista_usuario(request):
     mostrar_usuarios = User.objects.all()
-    return render(request, 'HTML/lista.html', {'usuario':mostrar_usuarios})
+    return render(request, 'HTML/lista.html', {'usuarios':mostrar_usuarios})
 
 from django.template.context import RequestContext
 from .forms import Registrar_form

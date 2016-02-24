@@ -1,16 +1,19 @@
-<html>
+{% extends "HTML/basico.html"%}
+{% load staticfiles %}
 
-<body>
+{% block style %}
+    <link rel="stylesheet" href="{% static 'CSS/lista/lista.css' %}" />
+{% endblock %}
+
+{% block content %}
     <h1>Cuentas creada:</h1>
     <table>
-    {% if usuario %}
-        {% for user in usuario %}
+    {% if usuarios %}
+        {% for user in usuarios %}
         <tr><td>{{ user.username }}</td></tr>
         {% endfor %}
     {% else %}
         <p>Lo sentimos, pero nadie todavía se ha registrado. :(</p>
     {% endif %}
     </table>
-</body>
-
-</html>
+{% endblock %}
