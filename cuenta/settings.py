@@ -27,6 +27,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'usuarios.apps.UsuariosConfig',
+    # Esto es agregado para el framework de User.account
+    'django.contrib.sites',
+    'account',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -38,6 +41,9 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Esto es agregado para el framework de User.account
+    'account.middleware.LocaleMiddleware',
+    'account.middleware.TimezoneMiddleware',
 ]
 
 ROOT_URLCONF = 'cuenta.urls'
@@ -53,6 +59,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # Esto es agregado para el framework de User.account
+                'account.context_processors.account',
             ],
         },
     },
@@ -96,6 +104,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
+SITE_ID = int(os.environ.get("SITE_ID", 1))
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -113,3 +123,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "templates"),
 )
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+AUTHENTICATION_BACKENDS = [
+    "account.auth_backends.UsernameAuthenticationBackend",
+]

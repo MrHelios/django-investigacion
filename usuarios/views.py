@@ -3,7 +3,6 @@ from django.http.response import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, render_to_response
 
 def index(request):
-
     if request.user.is_authenticated():
         usuario = request.user
     else:
@@ -38,9 +37,16 @@ def crear_usuario(request):
     else:
         return render(request, 'HTML/creacion-usuario.html')
 
+from django.contrib.auth.decorators import login_required
+
+@login_required(login_url='/usuario/login/')
 def lista_usuario(request):
+    if request.user.is_authenticated():
+        usuario = request.user
+    else:
+        usuario = 'Anonimo'
     mostrar_usuarios = User.objects.all()
-    return render(request, 'HTML/lista.html', {'usuarios':mostrar_usuarios})
+    return render(request, 'HTML/lista.html', {'usuarios':mostrar_usuarios, 'usuario':usuario})
 
 from django.template.context import RequestContext
 from .forms import Registrar_form
