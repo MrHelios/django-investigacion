@@ -7,13 +7,24 @@
 
 {% block content %}
     <h1>Cuentas creada:</h1>
-    <table>
+
+    <form class="form-tabla">
+    <table style="width: 50%; margin-left: 25px;">
     {% if usuarios %}
         {% for user in usuarios %}
-        <tr><td>{{ user.username }}</td></tr>
+        <tr>
+            <td style="width: 25px">
+                <input type="checkbox" name="{{ user.username }}" id="{{ user.username }}">
+            </td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+        </tr>
         {% endfor %}
     {% else %}
         <p>Lo sentimos, pero nadie todavía se ha registrado. :(</p>
     {% endif %}
     </table>
+
+        <input class="input-form" type="submit" value="Borrar" />
+    </form>
 {% endblock %}

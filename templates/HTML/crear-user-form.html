@@ -1,30 +1,11 @@
-<html>
+{% extends "HTML/basico.html" %}
+{% block content %}
+    <h1>Creacion de Usuario</h1>
 
-<body>
-    <h1>Creacion de Usuario Mediante FORM</h1>
-
-    <form action="" method="post">
-
-    <ul style="list-style-type:none">
-        <li>{{ form.usuario.errors }}</li>
-        <li>{{ form.usuario.label_tag }}</li>
-        <li>{{ form.usuario }}</li>
-
-        <li>{{ form.clave2.errors }}</li>
-        <li>{{ form.clave.label_tag }}</li>
-        <li>{{ form.clave }}</li>
-
-        <li>{{ form.clave2.label_tag }}</li>
-        <li>{{ form.clave2 }}</li>
-
-        <li>{{ form.email.label_tag }}</li>
-        <li>{{ form.email }}</li>
+    <form class="form-registrar" action="" method="post">
+        {{ form.as_p }}
 
         {% csrf_token %}
-        <li><input type="submit" value="login" /></li>
-    </ul>
-
+        <input type="submit" value="Registrar" />
     </form>
-</body>
-
-</html>
+{% endblock %}

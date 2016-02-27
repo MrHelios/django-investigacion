@@ -42,9 +42,8 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/usuario/login/')
 def lista_usuario(request):
     if request.user.is_authenticated():
-        usuario = request.user
-    else:
-        usuario = 'Anonimo'
+        usuario = request.user    
+
     mostrar_usuarios = User.objects.all()
     return render(request, 'HTML/lista.html', {'usuarios':mostrar_usuarios, 'usuario':usuario})
 

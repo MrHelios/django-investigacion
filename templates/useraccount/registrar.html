@@ -1,13 +1,14 @@
-<html>
+{% extends "HTML/basico.html" %}
 
-    <h1> Esto es Registrar </h1>
+{% block content %}
 
-    <form action="" method="post">
+<h1>Registrar usuario</h1>
 
-        {{ form.as_p }}
+<form class="form-registrar" action="" method="post">
 
-        <input type="submit" value="Registrar" />
-        {% csrf_token %}
-    </form>
+    {{ form.as_p }}
 
-</html>
+    <input type="submit" value="Registrar" />
+    {% csrf_token %}
+</form>
+{% endblock %}

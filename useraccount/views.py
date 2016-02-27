@@ -28,3 +28,13 @@ class UserPersonalView(View):
             )
             return redirect("/usuario/login")
         return render(self.request, self.template_name, {'form' : form})
+
+class PruebaView(View):
+
+    template_name = "useraccount/prueba.html"
+
+    def get(self, request):
+        return render()
+
+    def post(self, request):
+        return render()

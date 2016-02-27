@@ -1,13 +1,13 @@
-<html>
+{% extends "HTML/basico.html" %}
+{% block content%}
 
-<body>
     <h1>Login</h1>
 
     {% if errors %}
         <li>El usuario y/o la contraseña no son correcta.</li>
     {% endif %}
 
-    <form action="" method="post">
+    <form class="form-registrar" action="" method="post">
 
     <ul style="list-style-type:none">
 
@@ -22,6 +22,4 @@
     </ul>
 
     </form>
-</body>
-
-</html>
+{% endblock %}
