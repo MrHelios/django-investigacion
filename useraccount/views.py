@@ -34,7 +34,14 @@ class PruebaView(View):
     template_name = "useraccount/prueba.html"
 
     def get(self, request):
-        return render()
+        usuario = User.objects.all()
+        return render(self.request, self.template_name, {'usuario': usuario })
 
     def post(self, request):
-        return render()
+        usuario = User.objects.all()
+        respuesta = []
+        for u in usuario:
+            if request.POST.get(str(u),'') == 'on':
+                respuesta.append(u)
+
+        return render(self.request, self.template_name, {'usuario': usuario , 'respuesta': respuesta })

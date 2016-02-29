@@ -1,0 +1,23 @@
+<html>
+    <h1>Usuarios:</h1>
+
+    <form method="post">
+        <ul style="list-style-type: none;">
+        {% for u in usuario %}
+            <li><input type="checkbox" name={{u.username}} id={{u.username}}> {{ u.username }}</li>
+        {% endfor %}
+        </ul>
+
+        <input type="submit" value="Login" />
+        {% csrf_token %}
+    </form>
+
+    <div>
+        <h2>Elegiste:</h2>
+        <ul style="list-style-type: none;">
+        {% for u in respuesta %}
+            <li>{{ u.username }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+</html>
