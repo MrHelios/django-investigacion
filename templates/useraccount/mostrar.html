@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <style>
+    p {
+        margin-top: 1px;
+        margin-bottom: 2px;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>Muestra el archivos: </h1>
+
+    <div>
+        <ul>
+            {% for i in todos%}
+            <li><a href="/useraccount/subir/{{i.id}}">{{i.archivo.name}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div>
+        <p style="font-size: larger; margin-bottom: 10px;">Nombre del archivo: {{ arch_nombre }} </p>
+        <ol type="1">
+        {% for i in arch %}
+            <li><p>{{ i }}</p></li>
+        {% endfor %}
+        </ol>
+    </div>
+</body>
+
+</html>

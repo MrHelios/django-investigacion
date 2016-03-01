@@ -68,3 +68,33 @@ class SubidaFileView(View):
             return HttpResponseRedirect('/usuario/')
         else:
             return render(self.request, self.template_name, {'form': form})
+
+from django.http import Http404
+
+class EditFileView(View):
+
+    template_name = "useraccount/mostrar.html"
+
+    def get(self, request, UploadFile_id):
+
+        try:
+            UploadFile.objects.get(pk=UploadFile_id)
+            # Todos los archivos subidos:
+            todos = UploadFile.objects.all()
+
+            # Trabajo con un objeto:
+            arch = UploadFile.objects.filter(id= UploadFile_id)
+
+            arch_nombre = arch[0].archivo.name
+            arch_separado = []
+            with open(arch[0].archivo.name, 'r') as archivo:
+                lineas = archivo.readlines()
+                for linea in lineas:
+                    arch_separado.append(linea)
+        except UploadFile.DoesNotExist:
+            raise Http404("El archivo no existe.")
+
+        return render(self.request, self.template_name, {'arch': arch_separado, 'arch_nombre': arch_nombre, 'todos': todos})
+
+    def post(self, request):
+        return render(self.request, self.template_name)
