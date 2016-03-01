@@ -26,7 +26,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Apps creados por mi
+    'useraccount.apps.UseraccountConfig',
     'usuarios.apps.UsuariosConfig',
+
     # Esto es agregado para el framework de User.account
     'django.contrib.sites',
     'account',
@@ -41,6 +44,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
     # Esto es agregado para el framework de User.account
     'account.middleware.LocaleMiddleware',
     'account.middleware.TimezoneMiddleware',

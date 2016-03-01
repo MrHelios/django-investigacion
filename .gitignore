@@ -3,3 +3,5 @@ cuenta/__pycache__/
 usuarios/__pycache__/
 usuarios/migrations/__pycache__/
 useraccount/__pycache__/
+subida/
+useraccount/migrations/__pycache__/

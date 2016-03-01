@@ -1,0 +1,22 @@
+<html>
+
+    <h1>Aqui podes subir archivos.</h1>
+
+    <form method='post' enctype="multipart/form-data">
+        {{ form.as_p }}
+        <input type="submit" value="Subir"/>
+        {% csrf_token %}
+    </form>
+
+    <h2>Los archivos subidos: </h2>
+    {% if elementos%}
+    <ul>
+        {% for e in elementos %}
+            <li>{{e.archivo.name}}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No hay elementos subidos.</p>
+    {% endif %}
+
+</html>

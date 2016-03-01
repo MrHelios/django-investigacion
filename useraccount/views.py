@@ -45,3 +45,26 @@ class PruebaView(View):
                 respuesta.append(u)
 
         return render(self.request, self.template_name, {'usuario': usuario , 'respuesta': respuesta })
+
+from django.http import HttpResponseRedirect
+
+from .forms import UploadFileForm
+from .models import UploadFile
+
+class SubidaFileView(View):
+
+    template_name = "useraccount/subir.html"
+
+    def get(self, request):
+        form = UploadFileForm()
+        elementos = UploadFile.objects.all()
+        return render(self.request, self.template_name, {'form': form, 'elementos': elementos})
+
+    def post(self, request):
+        form = UploadFileForm(self.request.POST, self.request.FILES)
+        if form.is_valid():
+            nuevo_arch = UploadFile(archivo = request.FILES['archivo'])
+            nuevo_arch.save()
+            return HttpResponseRedirect('/usuario/')
+        else:
+            return render(self.request, self.template_name, {'form': form})
